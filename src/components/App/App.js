@@ -17,16 +17,20 @@ function App () {
         setError(error.message)
         console.error('Error fetching data', error)
       })
-  })
+  },[])
+
+  const updateUrls = (newUrl) => {
+    setUrls([...urls, newUrl])
+  }
 
   return (
     <main className="App">
       <header>
         <h1>URL Shortener</h1>
-        <UrlForm />
+        <UrlForm updateUrls={updateUrls}/>
       </header>
 
-      <UrlContainer urls={urls} key={urls.id}/>
+      <UrlContainer urls={urls} key={urls.id} />
     </main>
   );
 }
