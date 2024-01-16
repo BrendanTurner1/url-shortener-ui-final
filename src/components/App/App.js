@@ -26,7 +26,7 @@ function App () {
   return (
     <main className="App">
       <header>
-        <h1>URL Shortener</h1>
+        <h1 className='app-title'>URL Shortener</h1>
         <UrlForm updateUrls={updateUrls}/>
       </header>
 

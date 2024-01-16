@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 function UrlForm({ updateUrls }) {
   const [title, setTitle] = useState('');
   const [urlToShorten, setUrlToShorten] = useState('');
-  const [postData, setPostData] = useState({})
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,11 +10,10 @@ function UrlForm({ updateUrls }) {
       long_url: urlToShorten,
       title: title
     }
-    setPostData(newData);
     fetch('http://localhost:3001/api/v1/urls', {
       method:'POST',
       headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify(postData)
+      body: JSON.stringify(newData)
     })
     .then((response) => {
       if (!response.ok) {
@@ -39,7 +37,7 @@ function UrlForm({ updateUrls }) {
   }
 
   return (
-    <form>
+    <form className='app-form'>
       <input
         type='text'
         placeholder='Title...'
