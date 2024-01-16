@@ -6,9 +6,17 @@ import UrlForm from '../UrlForm/UrlForm';
 
 function App () {
   const [urls, setUrls] = useState([]);
+  const [error, setError] = useState([])
 
   useEffect(() => {
-
+    getUrls()
+      .then((url) => {
+        setUrls(url.urls)
+      })
+      .catch((error)=> {
+        setError(error.message)
+        console.error('Error fetching data', error)
+      })
   })
 
   return (
@@ -18,7 +26,7 @@ function App () {
         <UrlForm />
       </header>
 
-      <UrlContainer urls={"<<<Urls should go here>>>"}/>
+      <UrlContainer urls={urls} key={urls.id}/>
     </main>
   );
 }
