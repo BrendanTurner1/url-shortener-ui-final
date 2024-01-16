@@ -6,21 +6,19 @@ import UrlForm from '../UrlForm/UrlForm';
 
 function App () {
   const [urls, setUrls] = useState([]);
-  const [error, setError] = useState([])
 
   useEffect(() => {
     getUrls()
       .then((url) => {
-        setUrls(url.urls)
+        setUrls(url.urls);
       })
       .catch((error)=> {
-        setError(error.message)
-        console.error('Error fetching data', error)
+        console.error('Error fetching data', error);
       })
   },[])
 
   const updateUrls = (newUrl) => {
-    setUrls([...urls, newUrl])
+    setUrls([...urls, newUrl]);
   }
 
   return (

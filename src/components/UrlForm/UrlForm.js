@@ -23,7 +23,7 @@ function UrlForm({ updateUrls }) {
     })
     .then((responseData) => {
       console.log('Response data:', responseData);
-      updateUrls(responseData)
+      updateUrls(responseData);
     })
     .catch((error) => {
       console.error('Error:', error.message);
